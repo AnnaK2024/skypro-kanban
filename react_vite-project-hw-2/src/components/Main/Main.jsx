@@ -1,37 +1,19 @@
-import { Card } from "../Card/Card.jsx";
 import { Column } from "../Column/Column.jsx";
 
-export const Main = () => {
+export const Main = ({cards, isLoading}) => {
   return (
     <main className="main">
         <div className="container">
           <div className="main__block">
-            <div className="main__content">
-             <Column title= {'Без статуса'} cards={
-                <>
-                 <Card name={'Web Design'} color={'_orange'} />
-                 <Card name={'Researgh'} color={'_green'} />
-                 <Card name={'Web Design'} color={'_orange'} />
-                 <Card name={'Copywriting'} color={'_purple'} />
-                 <Card name={'Researgh'} color={'_green'} />
-                </>
-              }/>
-
-              <Column title= {'Нужно сделать'} cards= {<Card name={'Researgh'} color={'_green'} />} />
-
-              <Column title= {'В работе'} cards={
-                <>
-                 <Card name={'Researgh'} color={'_green'} />
-                 <Card name={'Copywriting'} color={'_purple'} />
-                 <Card name={'Web Design'} color={'_orange'} />
-                </>
-              }/>
-
-              <Column title= {'Тестирование'} cards= {<Card name={'Researgh'} color={'_green'} />} />
-
-              <Column title= {'Готово'} cards= {<Card name={'Researgh'} color={'_green'} />} />
-
-            </div>
+            {isLoading ? 'Loading...' : (
+              <div className="main__content">
+                <Column title= {'Без статуса'} cards={cards.filter(el => el.status === 'Без статуса' )}/>
+                <Column title= {'Нужно сделать'} cards={cards.filter(el => el.status === 'Нужно сделать' )}/>
+                <Column title= {'В работе'} cards={cards.filter(el => el.status === 'В работе' )}/>
+                <Column title= {'Тестирование'} cards={cards.filter(el => el.status === 'Тестирование' )}/>
+                <Column title= {'Готово'} cards={cards.filter(el => el.status === 'Готово' )}/>
+              </div>
+            )}
           </div>
         </div>
     </main>
