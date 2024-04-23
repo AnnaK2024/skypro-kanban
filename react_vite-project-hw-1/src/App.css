@@ -908,6 +908,9 @@ body {
   color: #94A6BE;
   letter-spacing: 0.2px;
 }
+.card__name {
+  border-radius: 18px;
+}
 
 @media screen and (max-width: 1200px) {
   .main__block {
